@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Navidad ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(180deg, #0b3d2e, #145a32);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    padding: 40px 20px;
+}
+
+/* TITULO */
+h1 {
+    font-size: 3em;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255,215,0,0.8);
+}
+
+/* TARJETA */
+.card {
+    max-width: 700px;
+    margin: 30px auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* IMAGEN */
+.photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255,215,0,0.7);
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 15px gold; }
+    to { box-shadow: 0 0 35px gold; }
+}
+
+/* TEXTO */
+.message {
+    font-size: 1.3em;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* BOTON MUSICA */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    background: #c0392b;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+button:hover {
+    background: #e74c3c;
+}
+
+/* NIEVE */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* PIE */
+footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSICA -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>🎄 Feliz Navidad Negrita Hermosa 🎄</h1>
+
+    <div class="card">
+        <img src="foto.jpeg" alt="Foto especial" class="photo">
+
+        <p class="message">
+            Esta Navidad quiero recordarte lo importante que eres para mí.  
+            Que con cada abrazo y cada sonrisa me envuelves en tu amor,  
+            y me llenas de felicidad. ❤️  
+            Gracias por hacer mis días más hermosos a tu lado.
+        </p>
+
+        <button onclick="toggleMusic()">Play</button>
+    </div>
+
+    <footer>
+        Con todo mi amor ✨
+    </footer>
+</div>
+
+<script>
+// MUSICA
+const music = document.getElementById("music");
+let playing = false;
+
+function toggleMusic() {
+    if (!playing) {
+        music.play();
+    } else {
+        music.pause();
+    }
+    playing = !playing;
+}
+
+// NIEVE
+function createSnowflake() {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.innerHTML = "❄";
+    snowflake.style.left = Math.random() * window.innerWidth + "px";
+    snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    snowflake.style.opacity = Math.random();
+    snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
+
+    document.body.appendChild(snowflake);
+
+    setTimeout(() => {
+        snowflake.remove();
+    }, 5000);
+}
+
+setInterval(createSnowflake, 200);
+</script>
+
+</body>
+</html>
